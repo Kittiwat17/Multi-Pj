@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Maicraft</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../head-logo.png">
+
+    <style type="text/css">
+        body {
+            background-image: url("2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: Minecrafter, sans-serif;
+        }
+        
+        @font-face {
+            font-family: "Minecrafter.Alt.ttf";
+            src: url(wed/font/Minecrafter.Alt.ttf) format("TrueType");
+        }
+        
+        a {
+            color: #ffffff;
+            text-shadow: 0px 5px 3px #000000;
+            text-decoration: none;
+        }
+        
+        p {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <br></br>
+    <br></br>
+    <br></br>
+    <p>NAME</p>
+    <br></br>
+    <input type="text" name="users" id="users" onkeyup="myFunction()">
+    <br></br>
+    <div class="text">
+        <h1><a href="./startgame/game.html">NEXT</a></h1>
+    </div>
+    <br></br>
+    <div class="text">
+        <h1><a href="../index.html">BACK</a></h1>
+    </div>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("users").value;
+            document.getElementById("demo").innerHTML = x;
+        }
+    </script>
+</body>
+
+</html>
