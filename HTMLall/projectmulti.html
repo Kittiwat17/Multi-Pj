@@ -7,6 +7,12 @@
 		width: 100vw;
 		margin:0;
 		background-color: hsl(220,50%,70%);
+
+	}
+	#time{
+		position: fixed;
+		left:50%;
+		transition: 2s;
 	}
 	.start{
 		position: fixed;
@@ -20,9 +26,8 @@
 	}
 	.close{
 		position: fixed;
-		top: 0%;
-		left: 0%;
-		
+		top: -20%;
+		z-index: 0;		
 	}
 	.floor{
 		position: absolute;
@@ -32,21 +37,26 @@
 		height: 20vh;
 		width: 200%;
 		background-color: #5E2c04;
-		opacity: 0.1;
+		opacity: 1;
 		z-index: 999;
 	}
 	#charac{
 		position: absolute;
-		top: 50%;
+		top: 60%;
 		left: 10%;
 		display: block;
-		height: 30vh;
+		height: 20vh;
 		width: 7%;
-		background-image: url("char1.jpg");
-		background-size: 15vh 102%;
+		background-image: url("walk-R.tif");
+		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
-		
+		transition: top .1s;
+	}
+	#charac[class = 'right']{animation: right 0.4s infinite alternate;}
+	@keyframes right {
+		50% {background-color: red;}
+		100% {background-color: blue;}
 	}
 	#a{
 		position: absolute;
@@ -85,43 +95,58 @@
 		width: 40%;
 		background-color: green;
 	}
+	#e{
+		position: absolute;
+		top: 60%;
+		left: 160%;
+		display: block;
+		height: 60vh;
+		width: 10%;
+		background-color: green;
+
+	}
 
 
 	</style>
 	<title></title>
 </head>
 <body>
-	<dir id="start" class="start"></dir>
+
+	<div id="time">0</div>
+	<dir id="start" class="start"><center>please enter up button</center></dir>
 	<div class="floor"></div>
-	<div id="charac"></div>
+	<div id="charac" class='stand'></div>
 	<div id="a">1</div>
 	<div id="b">2</div>
 	<div id="c">3</div>
 	<div id="d">4</div>
+	<div id="e">5</div>
 
 <script type="text/javascript">
+		if(true){var mavo = setTimeout(function(){window.scrollTo(0,0);},1);}
 		var up = false;
 		var down = false;
 		var left = false;
 		var right = false;
 		var start = false;
-		grow = 50;
-		x = 10;
-		y = 50;
+		grow = 60;
+		x = 0;
+		y = 60;
 		stax = 0;
-		h = 30;
+		h = 20;
 		w = 7;
+		move = 3;
+		t = 0;
+		i = 1;
 		gavity();
-		tbs1 = 90;
-		tbs2 = -20;
-		tbs3 = 60;
 		
 		var tbs = [90,-40,60,60];
-		var hbs = [tbs[0]-h,tbs[1]-h,tbs[2]-h,tbs[3]-h,tbs[3]-(h-1),51,50];
+		var hbs = [tbs[0]-h,tbs[1]-h,tbs[2]-h,tbs[3]-h,tbs[3]-(h-1),61,60];
 		var lbs = [30,10,50,150];
 		boxa =false;
 		boxb = false;
 		id2 = "#b";
+		
 		document.addEventListener('keydown',press)
 		function press(e){
 			if (e.keyCode === 38)
@@ -130,7 +155,7 @@
 				start =true;
 			}
 			if (e.keyCode === 87||e.keyCode === 32){
-				if (hbs.includes(y)) {stax=1;}
+				if (y>=grow) {stax=1;}
 				if (stax===2) {stax+=1;}
 				up = true;
 			}
@@ -139,6 +164,7 @@
 			}
 			if (e.keyCode === 39||e.keyCode===68){
 				right = true;
+
 			}
 			if (e.keyCode === 37||e.keyCode === 65){
 				left = true;
@@ -151,6 +177,7 @@
   			}
   			if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
     			right = false;
+    			var mr = document.querySelector("#charac").setAttribute("class", "stand");
   			}
   			if (e.keyCode === 40 /* down */ || e.keyCode === 83 /* s */){
    				down = false;
@@ -158,49 +185,53 @@
   			if (e.keyCode === 37 /* left */ || e.keyCode === 65 /* a */ || e.keyCode === 81 /* q */){
     			left = false;
   			}
+
 		}
 		function gameLoop(){
   			var div = document.querySelector('#charac')
   			if (start) 
   			{
 
-  				
+  				/*var move = setInterval(function(){ window.scrollBy(1,0);}, 700);*/
+  				if (start) {setInterval(function(){t+=i;document.getElementById("time").innerHTML = (t-(t%6000))/6000+":"+((t%6000)-(t%100))/100 +":"+t%100;}, 1000);}
   				toup(20,40,0,30,100,10,"#a");
   				todown(10,0,1,10,80,10,"#b");
   				todown(40,80,2,50,5,40,"#c");
   				toleft(80,92,60,3,5,40,"#d");
-				/*check(60,50,5,40);*/
+
 				
   			}
   			if (up){
   				var cc = document.querySelector("#charac");
-  				if (stax===1) {y = y - 40;stax+=1;cc.style.backgroundColor = "black";}
-  				if (stax===3) {y = y - 50;stax+=1;cc.style.backgroundColor = "red";}
+  				if (stax===1) {y = y - 40;stax+=1;}
+  				if (stax===3) {y = y - 50;stax+=1;}
   				if (stax>=4) {y = y;}
   				
   				
   			}
   			if (right){
     			x = x + 1;
+    			var mr = document.querySelector("#charac").setAttribute("class", "right");
+    			window.scrollBy(10,0);
     			
   			}
   			if (down){
+  				if (y>=61) {y-=1;}
     			y = y + 1;
     			
   			}
   			if (left){
     			x = x - 1;
+    			window.scrollBy(-10,0);
     			
   			}
   
   			div.style.top = y+'%';
   			div.style.left = x+'%';
+  			if (x>=160) {i=0;}
   			window.requestAnimationFrame(gameLoop)
 		}
-		/*if (x!=0||y!=0) {
-			check(70,30,10,10);
-			check(40,50,5,40);
-		}*/
+
 		function gavity(){
 			var too = document.querySelector('#charac');
 			if (y<grow) {
@@ -215,18 +246,19 @@
 			if (x>=(lb-w)-0.3&&y>=(tb-(h-2))&&y<=(tb+(hb-0.1))&&x<=(lb-w)) 
 			{
 				right = false;
-				grow = 50;
+				
 			}
 
-			if (y<=(tb-(h-0.1))&&x>=(lb-(w-0.5))&&x<=(lb+(wb-0.1))) 
+			if (y===tb-(h-1)&&x>=lb-(w-1)&&x<=lb+(wb-1)) 
 			{
-				grow = tb-(h-0.1);
+				y-=1;
+				/*grow = tb-(h-0.1);*/
+
 			}
 
-			if (x>=(lb+wb)&&y>=(tb-(h-2))&&y<=(tb+(hb-0.1))&&x<=(lb+wb))
+			if (x>=(lb+wb)&&y>=(tb-(h-1))&&y<=(tb+(hb-0.1))&&x<=(lb+wb))
 			{
 				left = false;
-				grow = 50;
 			}
 			if (y>=tb&&y<=tb+hb+0.3&&x>=lb-(w-0.1)&&x<=lb+(wb-0.1)) 
 			{
@@ -297,6 +329,26 @@
 			}
 		}
 		/*function toleft()*/
+		function torigth(xm,pb,tb,lb,hb,wb,id)
+		{
+			boxd = false;
+			if (x>=xm) {boxd=true;}
+			if (boxd) {
+				check(tb,lbs[lb],hb,wb);
+  				var c = document.querySelector(id);
+  				var cha = document.querySelector("#charac");
+  				if ( true&&lbs[lb]<pb) 
+  				{
+  					lbs[lb] = lbs[lb]+1;
+  					c.style.left = lbs[lb]+"%";
+  					if (true&&x===lbs[lb]+wb&&y>=tb-(h-1)&&y<=tb+(h-1)&&x>=lbs[lb]+wb) {
+  						x += 2;
+  						cha.style.left = x+"%";
+  					}
+  					check(tb,lbs[lb],hb,wb);
+  				}
+			}
+		}
 		window.requestAnimationFrame(gameLoop)
 </script>
 
