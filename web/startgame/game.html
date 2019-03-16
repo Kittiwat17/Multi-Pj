@@ -24,12 +24,6 @@
             src: url(wed/font/Minecrafter.Alt.ttf) format("TrueType");
         }
         
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            text-shadow: -1px 0 black, 0 5px black, 5px 0 black, 0 -1px black;
-        }
-        
         p.name {
             font-size: 70px;
         }
@@ -38,7 +32,7 @@
             font-size: 10px;
         }
         
-        input {
+        .box {
             font-family: Minecrafter, sans-serif;
             width: 350px;
             height: 100px;
@@ -47,8 +41,14 @@
             border: 5px solid rgb(211, 120, 120)
         }
         
-        .text {
-            font-family: Minecrafter, sans-serif;
+        input {
+            width: 120px;
+            height: 100px;
+        }
+        
+        .icon {
+            width: 120px;
+            height: 100px;
         }
     </style>
 </head>
@@ -57,29 +57,26 @@
     <br></br>
     <br></br>
     <p class="name">NAME</p>
-    <p>(4-15 Character)</p>
+    <p>(5-15 Character)</p>
     <br></br>
-    <input type="text" name="users" id="users" onkeyup="myFunction()">
-    <br></br>
-    <br></br>
-    <div class="text">
-        <h1><a href="../index.html">NEXT</a></h1>
-    </div>
-    <br></br>
-    <div class="text">
-        <h1><a href="../index.html">BACK</a></h1>
-    </div>
+    <form name="frmMain" action="" method="post" OnSubmit="return chkString();">
+        <input class="box" type="text" name="txtString" value="">
+        <br></br>
+        <input type="image" name="login" value="submit" src="next.png" alt="submit">
+        <br></br>
+        <a href="../index.html" class="text">
+            <img src="back.png" class="icon">
+        </a>
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("users").value;
-            document.getElementById("demo").innerHTML = x;
-            if (document.user.txtString.value.length < 4 || document.user.txtString.value.length > 15) {
-                alert('Name (4-15 Character) .');
-                return false;
+        <script language="JavaScript">
+            function chkString() {
+                if (document.frmMain.txtString.value.length < 5 || document.frmMain.txtString.value.length > 15) {
+                    alert('Please input name (5-15 Character) .');
+                    return false;
+                }
             }
-        }
-    </script>
+        </script>
+    </form>
 </body>
 
 </html>
