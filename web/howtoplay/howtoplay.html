@@ -30,22 +30,24 @@
                 text-decoration: underline;
                 color: blue;
             }
-            div{
+            .container{
                 width: 500px;
-                margin: 2em auto;
-                padding: 3em;
-                box-shadow: 0px 0px 10px #0005;
-                border-radius: 1em;
-                background: white;
-                opacity: 0.5;
-                z-index: 9;
+		        margin: 2em auto;
+		        padding: 2em;
+		        box-shadow: 0px 0px 10px #0005;
+		        border-radius: 1em;
+	            background-color:rgba(255, 255, 255, 0.5);
+                filter:alpha(opacity=40);
             }
-
-            p{
-                font-family: 'Courier New', Courier, monospace;
+            #text{
+                font-family: "Waffle Regular";
+                font-size: 2em;
                 color: black;
-                z-index: 10;
-                opacity: 1;
+            }
+            .icon {
+            width: 10%;
+            height: 10%;
+            margin-top: 2em;
             }
         </style>
     </head>
@@ -53,8 +55,13 @@
         <p align="center">
             <img src="htp.png">
         </p>
-        <div>
-            <p>ใช้ A D S W ในการบังคับทิศทางของตัวละครวิ่งเข้าถึงจุดหมายให้ไวที่สุด ! ย้ำ ! ระวังสิ่งกีดขวางให้ดี อย่าหาว่าไม่เตือน :) เอ๊ะๆ เตือนแล้วนะ</p>
+        <div class="container">
+            <div id="text" align="center"><b>A => Left<br>D => Right<br>W => Jump<br>บังคับทิศทางของตัวละครให้วิ่งเข้าถึงเส้นชัยให้ไวที่สุด ! ย้ำ ! ระวังสิ่งกีดขวางให้ดี อย่าหาว่าไม่เตือน :) เอ๊ะๆ เตือนแล้วนะ</b></div>
         </div>
+        <p align="center">
+        <a href="../index.html" class="text">
+            <img src="back.png" class="icon">
+        </a>
+        </p>
     </body>
 </html>
