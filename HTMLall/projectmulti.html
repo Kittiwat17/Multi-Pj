@@ -19,7 +19,7 @@
 		background-size: 100% 100%;
 	}
 	.back{
-		z-index: 1;
+		z-index: -1006;
 	}
 	.front{
 		z-index: 1006;
@@ -315,7 +315,7 @@
 	<div id="start" class="start"></div>
 	<div class="floor"></div>
 	<div id="charac" class='stand'></div>
-	<div id="gameo" class="front"><center id="textg">GAME OVER</center><center><button onclick="replay()">replay</button></center></div>
+	<div id="gameo" class="back"><center id="textg">GAME OVER</center><center><button onclick="replay()">replay</button></center></div>
 
 	<div id="c">3</div>
 	<div id="d">4</div>
@@ -344,6 +344,7 @@
 	if(true){windows.scrollTop = 0;}
 	function replay(){
 		window.scrollTo(0,0);
+		location.reload();
 		
 		document.getElementById("enn").setAttribute("class", "ends");
 		document.getElementById("gameo").setAttribute("class", "back");
@@ -353,7 +354,10 @@
 	function gameover(){
 		var random1 = Math.floor(Math.random() * 19);
 		var random2 = Math.floor(Math.random() * 9)*2;
-		if (true&&x==xy.position[random1].lb-w&&y>=xy.position[random1].tb-h&&y<=xy.position[random1].tb+(xy.position[random1].hb-1)) {}
+		if (true&&x==xy.position[random1].lb-w&&y>=xy.position[random1].tb-h&&y<=xy.position[random1].tb+(xy.position[random1].hb-1)) 
+		{
+			document.getElementById("gameo").setAttribute("class", "front");
+		}
 
 	}
 		if(true){var mavo = setTimeout(function(){window.scrollTo(0,0);},1);}
@@ -495,6 +499,9 @@
     			x = x + 1;
     			var mr = document.querySelector("#charac").setAttribute("class", "right");
     			window.scrollBy(12,0);
+    			if (x == 493) {
+    				x--;
+    			}
     			
   			}
   			if (down){
@@ -505,12 +512,16 @@
   			if (left){
     			x = x - 1;
     			window.scrollBy(-12,0);
+    			if (x == 0) {
+    				x++;
+    			}
     			
   			}
   
   			div.style.top = y+'%';
   			div.style.left = x+'%';
-  			if (x>=500) {i=0;document.getElementById("enn").setAttribute("class", "end");document.querySelector("center").innerHTML = (t-(t%6000))/6000+" : "+((t%6000)-(t%100))/100 +" : "+t%100;}
+  			if (true&&y<0) {document.getElementById("gameo").setAttribute("class", "front");}
+  			if (x>=490) {i=0;document.getElementById("enn").setAttribute("class", "end");document.querySelector("center").innerHTML = (t-(t%6000))/6000+" : "+((t%6000)-(t%100))/100 +" : "+t%100;}
 			
   			window.requestAnimationFrame(gameLoop)
 		}
