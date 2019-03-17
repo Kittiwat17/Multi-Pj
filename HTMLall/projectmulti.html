@@ -4,26 +4,116 @@
 	<style type="text/css">
 	body {
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
 		margin:0;
-		background-size: contain;
-		background-image: url("backg1.png");
-
+		position: absolute;
+		background-color: purple;
 	}
-	#time{
+	#sow{
+		left: 295%;
+	}
+	#sow1{
+		left: 395%;
+	}
+	.sow{
+		top:0%;
+		left: 195%;
+		height: 80vh;
+		width: 10%;
+		background-image:url("post.png");
+		position: absolute;
+		background-size:100% 100%;
+		z-index: 1005;
+	}
+	#c2{
+		font-size: 100px;
+	}
+	.end{
 		position: fixed;
-		left:50%;
-		transition: 2s;
+		top: 15%;
+		left: 15%;
+		height: 70vh;
+		width: 70%;
+		background-color: #155;
+		z-index: 1003;
+		font-size: 200px;
 	}
-	.starts{
+	.ends{
+		position: absolute;
+		z-index: 0;
+	}
+	
+	div#replay.replay{
 		position: fixed;
 		top: 18.2%;
 		left: 3.5%;
 		height: 60vh;
 		width: 90%;
 		display: block;
-		background-color: purple;
+		background-color: red;
+		z-index: 1001;
+	}
+	button#replay.replay{
+		position: absolute;
+		top: 50%;
+		left:50%;
+	}
+	.background{
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
+	#p1{
+		background-image: url("bg1.png");
+		background-size: contain;
+		left: 0;
+	}
+	#p2{
+		background-image: url("bg2.png");
+		background-size: contain; 
+		left: 100%;
+	}
+	#p3{
+		background-image: url("bg3.png");
+		background-size: contain; 
+		left: 200%;
+	}
+	#p4{
+		background-image: url("bg3.png");
+		background-size: contain; 
+		left: 300%;
+	}
+	#p5{
+		background-image: url("bg3.png");
+		background-size: contain; 
+		left: 400%;
+	}
+	.pll{
+		opacity: 0;
+		height: 0px;
+		width: 0px;
+	}
+	#time{
+		position: fixed;
+		left:50%;
+		transition: 2s;
+	}
+	div.start{
+		font-family: "Minecrafter Alt", sans-serif;
+		position: fixed;
+		top: 18.2%;
+		left: 3.5%;
+		height: 60vh;
+		width: 90%;
+		display: block;
+		background-image: url(entertostart.png);
+		background-repeat:no-repeat;
+		background-size:100% 100%;
 		z-index: 1000;
+	}
+	@font-face {
+    	font-family: "Minecrafter.Alt.ttf";
+    	src: url(Multi/Minecrafter.Alt.ttf) format("TrueType");
 	}
 	.close{
 		position: fixed;
@@ -36,10 +126,10 @@
 		left: 0%;
 		display: block;
 		height: 20vh;
-		width: 200%;
+		width: 500%;
 		background-color: #5E2c04;
 		opacity: 1;
-		z-index: 999;
+		z-index: 1004;
 	}
 	#charac{
 		position: absolute;
@@ -47,40 +137,30 @@
 		left: 10%;
 		display: block;
 		height: 20vh;
-		width: 7%;
+		width: 5%;
 		background-image: url("mid.png");
-		background-size: contain;
+		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		background-position: center;
 		transition: top .1s;
 	}
 	#charac[class = 'right']{
-		-webkit-animation: right 1s infinite;
+		-webkit-animation: right 0.5s infinite;
+	}
+	#charac[class = "jump"]{
+		-webkit-animation: jump 1s infinite;
+	}
+	@-webkit-keyframes jump {
+		0% {background-image: url("jump.png");}
+		
 	}
 	@-webkit-keyframes right {
-		0% {background-image: url("walk-L.png");}
-		50% {background-image: url("run-R.png");}
-		100% {background-image: url("walk-L.png");}
+		0% {background-image: url("run-M.png");}
+		25% {background-image: url("run-L.png");}
+		50% {background-image: url("run-M2.png");}
+		75% {background-image: url("run-R.png");}
 	}
-	#a{
-		position: absolute;
-		top: 90%;
-		left: 30%;
-		display: block;
-		height: 100vh;
-		width: 10%;
-		background-color: green;
-		transition: 0s;
-	}
-	#b{
-		position: absolute;
-		top: -40%;
-		left: 10%;
-		display: block;
-		height: 80vh;
-		width: 10%;
-		background-color: green;
-	}
+
 	#c{
 		position: absolute;
 		top: 60%;
@@ -89,78 +169,227 @@
 		height: 5vh;
 		width: 40%;
 		background-color: green;
-	}
+		z-index: 1002;
+	}	
 	#d{
 		position: absolute;
-		top: 60%;
-		left: 150%;
+		top: 80%;
+		left: 115%;
 		display: block;
-		height: 5vh;
-		width: 40%;
-		background-color: green;
-	}
+		height: 50vh;
+		width: 10%;
+		background-image:url("tree.png");
+		background-size:100% 100%;d
+		z-index: 1002;
+	}	
 	#e{
 		position: absolute;
 		top: 60%;
 		left: 160%;
 		display: block;
+		height: 43vh;
+		width: 10%;
+		background-image:url("tree.png");
+		background-size:100% 100%;
+		z-index: 1002;
+	}
+	/**/
+	.state3{
+		position: absolute;
+		display: block;
 		height: 60vh;
 		width: 10%;
-		background-color: green;
-
+		background-image: url("posts3.png");
+		z-index: 1002;
+		background-size:100% 100%;
+	}
+	#f{
+		top: 80%;
+		left: 200%;
+	}
+	#g{
+		top: 71%;
+		left: 210%;
+	}
+	#h{
+		top: 62%;
+		left: 220%;
+	}
+	#i{
+		top: 53%;
+		left: 230%;
+	}
+	#j{
+		top: 44%;
+		left: 240%;
+	}
+	#k{
+		top: 35%;
+		left: 250%;
+	}
+	#l{
+		top: 26%;
+		left: 260%;
+	}
+	#m{
+		top: 17%;
+		left: 270%;
+	}
+	#n{
+		top: 8%;
+		left: 280%;
+	}
+	#o{
+		top: -1%;
+		left: 290%;
+	}
+	
+	#p{
+		top:50%;
+		left: 310%;
+	}
+	#q{
+		top:50%;
+		left: 330%;
+	}
+	#r{
+		top:50%;
+		left: 350%;
+	}
+	#s{
+		top:50%;
+		left: 370%;
 	}
 
-
+	#state4{
+		top: 75%;
+		left: 300%;
+		height: 5vh;
+		width: 100%;
+		background-image: url("thorn.png");
+		background-size: 100% 100%;
+		position: absolute;
+		z-index: 1001;
+	}
 	</style>
 	<title></title>
 </head>
 <body>
-
-	<div id="time">0</div>
-	<dir id="start" class="start"><center>please enter up button</center></dir>
+	<div class="sow"></div>
+	<div id="sow" class="sow"></div>
+	<div id="sow1" class="sow"></div>
+	<div id="enn" class="ends">
+	<center id="c1" class="replay">score</center><center id="c2" class="replay">YOURSCORE</center><center class="replay"><button onclick="replay()">replay</button></center>
+	</div>
+	
+	<div id="p1" class="background"></div>
+	<div id="p2" class="background"></div>
+	<div id="p3" class="background"></div>
+	<div id="p4" class="background"></div>
+	<div id="p5" class="background"></div>
+	<div id="time">0 : 0 : 0</div>
+	<div id="start" class="start"></div>
 	<div class="floor"></div>
 	<div id="charac" class='stand'></div>
-	<div id="a">1</div>
-	<div id="b">2</div>
+
 	<div id="c">3</div>
 	<div id="d">4</div>
 	<div id="e">5</div>
 
+	<div id="f" class="state3">6</div>
+	<div id="g" class="state3">7</div>
+	<div id="h" class="state3">8</div>
+	<div id="i" class="state3">9</div>
+	<div id="j" class="state3">10</div>
+	<div id="k" class="state3">11</div>
+	<div id="l" class="state3">12</div>
+	<div id="m" class="state3">13</div>
+	<div id="n" class="state3">14</div>
+	<div id="o" class="state3">15</div>
+
+	<div id="p" class="state3">16</div>
+	<div id="q" class="state3">17</div>
+	<div id="r" class="state3">18</div>
+	<div id="s" class="state3">19</div>
+
+	<div id="state4" class="gameover">aaa</div>
+
 <script type="text/javascript">
+	var windows = document.querySelector("body");
+	if(true){windows.scrollTop = 0;}
+	function replay(){
+		window.scrollTo(0,0);
+		
+		document.getElementById("enn").setAttribute("class", "ends");
+		x = 0;
+	}
 		if(true){var mavo = setTimeout(function(){window.scrollTo(0,0);},1);}
 		var up = false;
 		var down = false;
 		var left = false;
 		var right = false;
 		var start = false;
+		var hc = document.querySelector("#charac"); /*h = 20;*/
+		var wc = document.querySelector("#charac");
+		var xc = document.querySelector("#charac");
+		var yc = document.querySelector("#charac");
 		grow = 60;
 		x = 0;
+		/*x = 0;*/
 		y = 60;
+		/*y = 60;*/
 		stax = 0;
+		base = false;
 		h = 20;
-		w = 7;
+		w = 5;/*w = 5;*/
 		move = 3;
 		t = 0;
 		i = 1;
+		state3_1=false;
+		state3_2=false;
+		state4_1=false;
+		state4_2=false;
 		gavity();
+		starts = true;
 		
-		var tbs = [90,-40,60,60];
-		var hbs = [tbs[0]-h,tbs[1]-h,tbs[2]-h,tbs[3]-h,tbs[3]-(h-1),61,60];
-		var lbs = [30,10,50,150];
+		var posi  = '{ "position" : [' +
+                    '{ "tb":"90" , "lb":"30" , "hb":"60" , "wb":"10"},' +
+                    '{ "tb":"-40" , "lb":"10" , "hb":"80" , "wb":"10"},' +
+                    '{ "tb":"60" , "lb":"50" , "hb":"5" , "wb":"40"},' + 
+                    '{ "tb":"80" , "lb":"115" , "hb":"50" , "wb":"10"},' +
+                    '{ "tb":"60" , "lb":"160" , "hb":"43" , "wb":"10"},'+
+                    '{ "tb":"80" , "lb":"200" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"71" , "lb":"210" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"62" , "lb":"220" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"53" , "lb":"230" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"44" , "lb":"240" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"35" , "lb":"250" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"26" , "lb":"260" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"17" , "lb":"270" , "hb":"60" , "wb":"10"},'+
+                    '{ "tb":"8" , "lb":"280" , "hb":"60" , "wb":"10"},' +
+                    '{ "tb":"-1" , "lb":"290" , "hb":"60" , "wb":"10"},'+
+
+					'{ "tb":"50" , "lb":"310" , "hb":"60" , "wb":"10"},'+
+					'{ "tb":"50" , "lb":"330" , "hb":"60" , "wb":"10"},'+
+					'{ "tb":"50" , "lb":"350" , "hb":"60" , "wb":"10"},'+
+					'{ "tb":"50" , "lb":"370" , "hb":"60" , "wb":"10"},'+                    
+
+                    '{ "tb":"75" , "lb":"300" , "hb":"5" , "wb":"100"}]}';
+		var xy = JSON.parse(posi);
+
+	
 		boxa =false;
 		boxb = false;
 		id2 = "#b";
-		
+
 		document.addEventListener('keydown',press)
 		function press(e){
-			if (e.keyCode === 38)
+			if (e.keyCode === 13)
 			{
 				document.getElementById("start").setAttribute("class", "close");
-				start =true;
+				start = true;
 			}
 			if (e.keyCode === 87||e.keyCode === 32){
-				if (y>=grow) {stax=1;}
-				if (stax===2) {stax+=1;}
 				up = true;
 			}
 			if (e.keyCode === 40||e.keyCode === 83){
@@ -178,6 +407,7 @@
 		function release(e){
   			if (e.keyCode === 32 /* up */ || e.keyCode === 87 /* w */ || e.keyCode === 90 /* z */){
     			up = false;
+				var mrs = document.querySelector("#charac").setAttribute("class", "stand");
   			}
   			if (e.keyCode === 39 /* right */ || e.keyCode === 68 /* d */){
     			right = false;
@@ -197,26 +427,55 @@
   			{
 
   				/*var move = setInterval(function(){ window.scrollBy(1,0);}, 700);*/
-  				if (start) {setInterval(function(){t+=i;document.getElementById("time").innerHTML = (t-(t%6000))/6000+":"+((t%6000)-(t%100))/100 +":"+t%100;}, 1000);}
-  				toup(20,40,0,30,100,10,"#a");
-  				todown(10,0,1,10,80,10,"#b");
-  				todown(40,80,2,50,5,40,"#c");
-  				toleft(80,92,60,3,5,40,"#d");
+  				if (starts) {setInterval(function(){t+=i;document.getElementById("time").innerHTML = (t-(t%6000))/6000+" : "+((t%6000)-(t%100))/100 +" : "+t%100;}, 1000);}
+  				 /*xm pb tb lb hb wb*/
+  				todown(40,80,2,2,2,2,"#c");
+  				toup(100,30,3,3,3,3,"#d");
+				toup(150,40,4,4,4,4,"#e");
 
-				
-  			}
-  			if (up){
-  				var cc = document.querySelector("#charac");
-  				if (stax===1) {y = y - 40;stax+=1;}
-  				if (stax===3) {y = y - 50;stax+=1;}
-  				if (stax>=4) {y = y;}
+  				if (x<=300&&xy.position[5].tb==80) {state3_1=true;state3_2=false;}
+  				if (state3_1) {
+  					toup(0,-1,5,5,5,5,"#f");
+  					toup(0,8,6,6,6,6,"#g");
+  					toup(0,17,7,7,7,7,"#h");
+  					toup(0,26,8,8,8,8,"#i");
+  					toup(0,35,9,9,9,9,"#j");
+
+					todown(0,44,10,10,10,10,"#k");
+					todown(0,53,11,11,11,11,"#l");
+					todown(0,62,12,12,12,12,"#m");
+					todown(0,71,13,13,13,13,"#n");
+					todown(0,80,14,14,14,14,"#o");
+				}
+ 				if (x<=300&&xy.position[5].tb==-1) {state3_2=true;state3_1=false;}
+ 				if (state3_2) {
+  					todown(0,80,5,5,5,5,"#f");
+  					todown(0,71,6,6,6,6,"#g");
+  					todown(0,62,7,7,7,7,"#h");
+  					todown(0,53,8,8,8,8,"#i");
+  					todown(0,44,9,9,9,9,"#j");
+
+  					toup(0,35,10,10,10,10,"#k");
+					toup(0,26,11,11,11,11,"#l");
+					toup(0,17,12,12,12,12,"#m");
+					toup(0,8,13,13,13,13,"#n");
+					toup(0,-1,14,14,14,14,"#o");
+  				}
+				check(xy.position[15].tb,xy.position[15].lb,xy.position[15].hb,xy.position[15].wb);
+				check(xy.position[16].tb,xy.position[16].lb,xy.position[16].hb,xy.position[16].wb);
+				check(xy.position[17].tb,xy.position[17].lb,xy.position[17].hb,xy.position[17].wb);
+				check(xy.position[18].tb,xy.position[18].lb,xy.position[18].hb,xy.position[18].wb);
   				
   				
+			}
+  			if (up) {
+				var mrp = document.querySelector("#charac").setAttribute("class", "jump");
+  				y -= 5;
   			}
   			if (right){
     			x = x + 1;
     			var mr = document.querySelector("#charac").setAttribute("class", "right");
-    			window.scrollBy(10,0);
+    			window.scrollBy(12,0);
     			
   			}
   			if (down){
@@ -226,45 +485,47 @@
   			}
   			if (left){
     			x = x - 1;
-    			window.scrollBy(-10,0);
+    			window.scrollBy(-12,0);
     			
   			}
   
   			div.style.top = y+'%';
   			div.style.left = x+'%';
-  			if (x>=160) {i=0;}
+  			if (x>=500) {i=0;document.getElementById("enn").setAttribute("class", "end");document.querySelector("center").innerHTML = (t-(t%6000))/6000+" : "+((t%6000)-(t%100))/100 +" : "+t%100;}
+			
   			window.requestAnimationFrame(gameLoop)
 		}
 
 		function gavity(){
 			var too = document.querySelector('#charac');
 			if (y<grow) {
-				y = y + 1;
+				y+=1;
 				too.style.top = y+'%';
 			}window.requestAnimationFrame(gavity)
-			}
+		}
 
 			/*เช็คว่าคนชนวัตถุรึเปล่า*/
 		function check(tb,lb,hb,wb)
 		{
-			if (x>=(lb-w)-0.3&&y>=(tb-(h-2))&&y<=(tb+(hb-0.1))&&x<=(lb-w)) 
+			if (x==(lb-w)&&y>=(tb-(h-2))&&y<=(tb+(hb-0.1))) 
 			{
-				right = false;
-				
+				x -= 1;
+				window.scrollBy(-12,0);
 			}
 
-			if (y===tb-(h-1)&&x>=lb-(w-1)&&x<=lb+(wb-1)) 
+			if (y==tb-(h-1)&&x>=lb-(w-1)&&x<=lb+(wb-1)) 
 			{
-				y-=1;
+				y -= 1;
 				/*grow = tb-(h-0.1);*/
 
 			}
 
 			if (x>=(lb+wb)&&y>=(tb-(h-1))&&y<=(tb+(hb-0.1))&&x<=(lb+wb))
 			{
-				left = false;
+				x += 1;
+				window.scrollBy(12,0);
 			}
-			if (y>=tb&&y<=tb+hb+0.3&&x>=lb-(w-0.1)&&x<=lb+(wb-0.1)) 
+			if (y==tb+hb&&x>=lb-(w-1)&&x<=lb+(wb-1)) 
 			{
 				up = false;
 			}
@@ -275,16 +536,16 @@
 			boxa = false;
 			if (x>=xm) {boxa=true;}
   			if (boxa) {
-  				check(tbs[tb],lb,hb,wb);
+  				check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				var a = document.querySelector(id);
  				var cha = document.querySelector("#charac");	
 
- 				if (true&&tbs[tb]>pb){
- 					tbs[tb] -= 1;
-  					a.style.top = tbs[tb]+"%";  						
-  					check(tbs[tb],lb,hb,wb);
-  					if (true&&y>=tbs[tb]-h&&x>=lb-(w-1)&&x<=lb+(wb-1)) {
-  						y = y -2;
+ 				if (true&&xy.position[tb].tb>pb){
+ 					xy.position[tb].tb--;
+  					a.style.top = xy.position[tb].tb+"%";  						
+  					check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
+  					if (true&&y>=xy.position[tb].tb-h&&x>=xy.position[lb].lb-(w-1)&&x<=xy.position[lb].lb+(xy.position[wb].wb-1)) {
+  						y--;
   						cha.style.top = y+"%";
   					}
   				}
@@ -296,19 +557,19 @@
 			boxb = false;
 			if (x>=xm) {boxb=true;}
 			if (boxb) {
-  				check(tbs[tb],lb,hb,wb);
+  				check(true&&xy.position[tb].tb, xy.position[lb].lb, xy.position[hb].hb, xy.position[wb].wb);
   				var b = document.querySelector(id);
   				var cha = document.querySelector("#charac");
-  				if ( true&&tbs[tb]<pb) 
+  				if (xy.position[tb].tb < pb) 
   				{
   					
-  					tbs[tb] = tbs[tb]+1;
-  					b.style.top = tbs[tb]+"%";
-  					if (true&&y===tbs[tb]+hb&&x>=lb-(w-1)&&x<=lb+(wb-1)) {
+  					xy.position[tb].tb++;
+  					b.style.top = xy.position[tb].tb+"%";
+  					if (true&& y===xy.position[tb].tb + xy.position[hb].hb && x>=xy.position[lb].lb -(w-1)&&x<=xy.position[lb].lb+(xy.position[wb].wb-1)) {
   						y += 2;
   						cha.style.top = y+"%";
   					}
-  					check(tbs[tb],lb,hb,wb);
+  					check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				}
   			}
 		}
@@ -317,18 +578,18 @@
 			boxc = false;
 			if (x>=xm) {boxc=true;}
 			if (boxc) {
-				check(tb,lbs[lb],hb,wb);
+				check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				var c = document.querySelector(id);
   				var cha = document.querySelector("#charac");
-  				if ( true&&lbs[lb]>pb) 
+  				if ( true&&xy.position[lb].lb>=pb) 
   				{
-  					lbs[lb] = lbs[lb]-1;
-  					c.style.left = lbs[lb]+"%";
-  					if (true&&x===lbs[lb]-w&&y>=tb-(h-1)&&y<=tb+(h-1)&&x>=lbs[lb]-w) {
+  					xy.position[lb].lb--;
+  					c.style.left = xy.position[lb].lb+"%";
+  					if (true&&x===xy.position[lb].lb-w&&y>=xy.position[tb].tb-(h-1)&&y<=xy.position[tb].tb+(h-1)&&x>=xy.position[lb].lb-w) {
   						x -= 2;
   						cha.style.left = x+"%";
   					}
-  					check(tb,lbs[lb],hb,wb);
+  					check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				}
 			}
 		}
@@ -338,20 +599,31 @@
 			boxd = false;
 			if (x>=xm) {boxd=true;}
 			if (boxd) {
-				check(tb,lbs[lb],hb,wb);
+				check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				var c = document.querySelector(id);
   				var cha = document.querySelector("#charac");
-  				if ( true&&lbs[lb]<pb) 
+  				if ( true&&xy.position[lb].lb<=pb) 
   				{
-  					lbs[lb] = lbs[lb]+1;
-  					c.style.left = lbs[lb]+"%";
-  					if (true&&x===lbs[lb]+wb&&y>=tb-(h-1)&&y<=tb+(h-1)&&x>=lbs[lb]+wb) {
+  					xy.position[lb].lb++;
+  					c.style.left = xy.position[lb].lb+"%";
+  					if (true&&x===xy.position[lb].lb+xy.position[wb].wb&&y>=xy.position[tb].tb-(h-1)&&y<=xy.position[tb].tb+(h-1)&&x>=xy.position[lb].lb+xy.position[wb].wb) {
   						x += 2;
   						cha.style.left = x+"%";
   					}
-  					check(tb,lbs[lb],hb,wb);
+  					check(xy.position[tb].tb,xy.position[lb].lb,xy.position[hb].hb,xy.position[wb].wb);
   				}
 			}
+		}
+		
+		var stext = document.getElementById("#end");
+		var scoreb = ["0","0","0","0"];
+		function highscore()
+		{
+			var checks = 3
+			for (var i = 2; i >= 0; i--) {
+				if (t>=scoreb[i]) {scoreb[i+1]=scoreb[i];checks--;}
+			}
+			if (checks==0) {document.getElementById("end").innerHTML = (t-(t%6000))/6000+" : "+((t%6000)-(t%100))/100 +" : "+t%100;}
 		}
 		window.requestAnimationFrame(gameLoop)
 </script>
